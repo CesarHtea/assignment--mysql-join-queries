@@ -3,7 +3,7 @@
 ## Exercise
 
 ```sql
-#1 Write a query to get the department name and number of employees in the department.
+###1 Write a query to get the department name and number of employees in the department.
 
 SELECT E.DEPARTMENT_ID , D.DEPARTMENT_NAME , COUNT(*)
 FROM Employees E
@@ -11,8 +11,15 @@ INNER JOIN Departments D
 ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
 GROUP BY E.DEPARTMENT_ID;
 
-#2 Write a query to find the employee ID, job title, number of days between ending date and starting date for all jobs in department 90 from job history.
+###2 Write a query to find the employee ID, job title, number of days between ending date and starting date for all jobs in department 90 from job history.
 
+SELECT E.EMPLOYEE_ID, J.JOB_TITLE , DATEDIFF(H.END_DATE, H.START_DATE) AS DAYSBETWEEN
+FROM Employees E
+INNER JOIN Jobs J
+ON E.JOB_ID = J.JOB_ID 
+INNER JOIN JobHistory H
+ON J.JOB_ID = H.JOB_ID
+WHERE H.DEPARTMENT_ID = 90 ;
 
 
 #3 Write a query to display the department ID and name and first name of manager.
