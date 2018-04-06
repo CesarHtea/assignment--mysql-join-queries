@@ -56,6 +56,13 @@ GROUP BY E.JOB_ID;
 
 ## 6 Write a query to display job title, employee name, and the difference between salary of the employee and minimum salary for the job.
 
+```
+SELECT J.JOB_TITLE, E.FIRST_NAME, E.LAST_NAME, (E.SALARY - J.MIN_SALARY) AS 'DIFERENCE BETWEEN ACTUAL SALARY AND MINIMUN SALARY FOR THE JOB'
+FROM Employees E
+INNER JOIN Jobs J
+ON E.JOB_ID = J.JOB_ID;
+```
+
 ## 7 Write a query to display the job history that were done by any employee who is currently drawing more than 10000 of salary.
 
 ## 8 Write a query to display department name, name (first_name, last_name), hire date, salary of the manager for all managers whose experience is more than 15 years.
