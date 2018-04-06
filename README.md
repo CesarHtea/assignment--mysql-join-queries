@@ -34,9 +34,15 @@ INNER JOIN Employees E
 ON D.MANAGER_ID = E.EMPLOYEE_ID; 
 ```
 
-#4 Write a query to display the department name, manager name, and city.
+##4 Write a query to display the department name, manager name, and city.
 
-
+```
+SELECT D.DEPARTMENT_NAME AS DEPARTMENT, E.FIRST_NAME AS MANAGER, L.CITY FROM Departments D
+INNER JOIN Employees E
+ON D.MANAGER_ID = E.EMPLOYEE_ID
+INNER JOIN Locations L
+ON D.LOCATION_ID = L.LOCATION_ID;
+```
 
 #5 Write a query to display the job title and average salary of employees.
 
