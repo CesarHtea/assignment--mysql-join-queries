@@ -65,6 +65,7 @@ ON E.JOB_ID = J.JOB_ID;
 
 ### 7 Write a query to display the job history that were done by any employee who is currently drawing more than 10000 of salary.
 
+```
 SELECT 
 	E.FIRST_NAME AS NAME, 
     D.DEPARTMENT_NAME AS DEPARTMENT, 
@@ -79,6 +80,20 @@ ON E.JOB_ID = J.JOB_ID
 INNER JOIN JobHistory H
 ON E.EMPLOYEE_ID = H.EMPLOYEE_ID
 WHERE E.SALARY > 10000;
+```
 
 ### 8 Write a query to display department name, name (first_name, last_name), hire date, salary of the manager for all managers whose experience is more than 15 years.
+
+```
+SELECT 
+  D.DEPARTMENT_NAME AS DEPARTMENT, 
+  CONCAT( E.FIRST_NAME, ' ' , E.LAST_NAME ) AS 'MANAGER NAME',
+  E.HIRE_DATE AS 'HIRE DATE',
+  E.SALARY,
+  DATEDIFF(CURDATE(), E.HIRE_DATE) / 365 AS 'YEARS OF EXPERIENCE'
+FROM Departments D
+INNER JOIN Employees E
+ON D.MANAGER_ID = E.EMPLOYEE_ID
+WHERE DATEDIFF(CURDATE(), E.HIRE_DATE) > (15*365);
+```
 
